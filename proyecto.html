@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <title>Proyecto</title>
+    <link rel="shortcut icon" href="./favicon.ico" />
+    <link rel="stylesheet" href="./dist/reset.css" />
+    <link rel="stylesheet" href="./dist/reveal.css" />
+    <link rel="stylesheet" href="./dist/theme/solarized.css" id="theme" />
+    <link rel="stylesheet" href="./css/highlight/base16/zenburn.css" />
+
+    <link rel="stylesheet" href="./_assets/slides/css/filminas.css" />
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section data-markdown data-separator="^---" data-separator-vertical="^\r?\n----\r?\n$">
+          <textarea data-template>
+            
+
+# Proyecto: Práctico Integrador
+
+---
+
+## Temario
+
+1. Enunciado
+2. Requisitos
+
+---
+
+## [Enunciado](https://docs.google.com/document/d/1kshladtOu1VUWsoAw-S_mw03kIyq28Tyv56mvzKLQos/edit?tab=t.0#heading=h.pdp9wsykfu56)
+
+Como práctico integrador se solicita la creación de un sistema de **gestión de actividades deportivas** en un gimnasio, donde se destacan dos componentes a ser desarrollados:
+* **Backend**, desarrollado en Golang, que brindará todas las interfaces necesarias para dar solución al requerimiento.
+* **Frontend**, desarrollado en React, representa la vista final del usuario y consumirá los servicios desarrollados en el backend.
+
+El grupo será de **3** o **4** personas.
+
+---
+
+## Requisitos Backend
+
+<!-- .slide: style="font-size: 0.90em" -->
+
+- **Autenticación de usuarios:** Implementar un sistema de login y gestión de permisos de usuarios. Deben existir 2 tipos de usuarios: socio y administrador.
+- **Gestión de actividades deportivas:** Desarrollar endpoints que permitan la creación, edición, y eliminación de actividades deportivas por parte de los administradores del gimnasio. (ej. deben poder agregar clases de musculación, pilates, yoga, funcional, spinning, taekwondo, gap, aerobox, mma, boxeo, etc).
+- **Gestión de usuario:** Implementar endpoints para listar las clases a las que un socio está inscripto.
+- **Seguridad:** Garantizar la seguridad de las transacciones (autorización por token firmado entre frontend y backend) y datos (hashing de contraseñas) del sistema.
+
+---
+
+## Requisitos Frontend
+
+<!-- .slide: style="font-size: 0.80em" -->
+
+- **Pantalla de inicio (Home):** Mostrar un listado de las actividades deportivas disponibles para inscripción.
+- **Búsqueda de actividades deportivas:** Implementar un motor de búsqueda que permita a los socios encontrar las actividades deportivas por palabras clave o por horario.
+- **Detalle de la actividad deportiva:** Mostrar información detallada sobre una actividad deportiva seleccionada, incluyendo descripción, foto, instructor, horario, duración, cupo, etc.
+- **Inscripción en actividad deportiva:** Habilitar un botón de inscripción para que el socio pueda registrarse en una clase de la actividad de su interés.
+- **Mis actividades deportivas:** Mostrar un listado de las actividades deportivas a los que el usuario está inscrito, con la opción de acceder a los detalles de cada actividad.
+
+---
+
+## Criterios de Evaluación - Entrega Final
+
+- Frontend
+- Backend
+- Seguridad
+- Database
+- General
+
+---
+
+## Criterios de Evaluación: FRONTEND
+
+<!-- .slide: style="font-size: 0.70em" -->
+
+- [ ] Formulario de Login y botón para hacer Logout
+- [ ] Página de bienvenida se muestra correctamente
+- [ ] Se pueden buscar actividades deportivas correctamente
+- [ ] Muestra correctamente resultados de búsqueda / No hay resultados
+- [ ] Se puede inscribir correctamente a una actividad deportiva
+- [ ] Se muestra error si no se puede inscribir a una actividad deportiva (Por ejemplo si ya inscripto, o si se acabó el cupo)
+- [ ] Muestra el listado de actividades deportivas a los que se encuentra inscripto un usuario
+- [ ] Formulario para dejar un comentario y puntuación sobre la actividad deportiva
+- [ ] Formulario para crear una actividad deportiva sólo visible usuario administrador
+- [ ] Formulario para editar una actividad deportiva sólo visible usuario administrador
+- [ ] Permite al administrador subir un archivo relacionado con la actividade deportiva
+- [ ] Opción para eliminar una actividad deportiva sólo visible usuario administrador
+- [ ] Los errores al crear/editar/eliminar actividad deportiva se muestran correctamente
+
+---
+
+## Criterios de Evaluación: BACKEND
+
+<!-- .slide: style="font-size: 0.65em" -->
+
+- [ ] Login recibe las credenciales y genera un token de acceso
+- [ ] Implementa correctamente el registro de un usuario nuevo
+- [ ] Manejo de errores (401 Login inválido, 404 curso no encontrado, 400/409 ya inscripto, etc.)
+- [ ] Implementa correctamente la búsqueda de actividades deportivas
+- [ ] Implementa correctamente la generación de la inscripción
+- [ ] Implementa correctamente la obtención de actividades deportivas a los que está inscripto un user ID
+- [ ] Implementa correctamente agregar un comentario y puntuación al curso (y retorna esta información en el GET)
+- [ ] Implementa correctamente el agregado de un archivo relacionado a una actividad deportiva
+- [ ] Implementa estructura MVC y respeta las responsabilidades de modelo, vista y controlador.
+- [ ] Implementa correctamente la separación entre los objetos del modelos (DAOs) y los DTOs
+- [ ] Implementa correctamente el manejo de errores (no ignora los errores) y códigos de estado
+- [ ] Las funciones del backend no ignoran los errores (Validan siempre err != nil)
+
+---
+
+## Criterios de Evaluación: SEGURIDAD
+
+- [ ] La base de datos no almacena la información de la password de forma plana, usa hashing
+- [ ] Se valida el tipo de usuario via token para todas las funciones que lo necesiten (administrador)
+
+---
+
+## Criterios de Evaluación: DATABASE
+
+- [ ] Se conecta correctamente contra la base de datos usando GORM
+- [ ] Las distintas tablas en la base no duplican la información en más de una tabla
+
+---
+
+## Criterios de Evaluación: GENERAL
+
+- [ ] Cada componente de la solución se encuentra Dockerizada (Dockerfile, Docker Compose, etc.)
+- [ ] La solución completa corre correctamente con Docker
+
+---
+
+## Github Classromm
+
+[Proyecto2025](https://classroom.github.com/a/imdgYQQs)
+
+---
+
+![Estructura del Proyecto](images/proyecto/estructura-carpetas.png)
+
+---
+
+La estructura del proyecto está dividida en dos grandes partes: **backend** y **frontend**. 
+El cliente (frontend) y el servidor (backend) están desacoplados, lo que mejora la mantenibilidad y escalabilidad del proyecto.
+
+---
+
+## Backend
+
+<!-- .slide: style="font-size: 0.65em" -->
+
+- **clients:** Estan definidos los clientes que consumen servicios externos, como APIs de terceros, bases de datos no relacionales, servicios de autenticación, etc.
+- **controllers:** Contiene los controladores HTTP que reciben las peticiones del cliente, llaman a los servicios correspondientes y devuelven respuestas. Es el punto de entrada del backend a cada funcionalidad.
+- **dao (Data Access Object):** Maneja el acceso a la base de datos. Se encarga de hacer queries y mapear datos entre el modelo del dominio y las tablas o documentos en la base de datos.
+- **domain:** Define las entidades del negocio (modelos) y sus reglas. Esta capa representa el núcleo del dominio del sistema.
+- **services:** Contiene la lógica de negocio. Los servicios implementan las operaciones definidas por el dominio y son llamados desde los controladores.
+- **utils:** Funciones utilitarias o helpers que son reutilizables y no pertenecen específicamente a ninguna capa.
+- **main.go** Punto de entrada de la aplicación Go. Se configura el servidor HTTP, se inicializan los routers, se cargan los servicios, etc.
+
+---
+
+## ¿Dudas, Preguntas, Comentarios?
+
+![Preguntas](images/pregunta.gif)
+
+          </textarea>
+        </section>
+      </div>
+    </div>
+
+    <script src="./dist/reveal.js"></script>
+
+    <script src="./mermaid/dist/mermaid.min.js"></script>
+
+    <script src="./plugin/markdown/markdown.js"></script>
+    <script src="./plugin/highlight/highlight.js"></script>
+    <script src="./plugin/zoom/zoom.js"></script>
+    <script src="./plugin/notes/notes.js"></script>
+    <script src="./plugin/math/math.js"></script>
+    <script>
+      function extend() {
+        var target = {};
+        for (var i = 0; i < arguments.length; i++) {
+          var source = arguments[i];
+          for (var key in source) {
+            if (source.hasOwnProperty(key)) {
+              target[key] = source[key];
+            }
+          }
+        }
+        return target;
+      }
+
+      // default options to init reveal.js
+      var defaultOptions = {
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+        transition: 'default', // none/fade/slide/convex/concave/zoom
+        slideNumber: true,
+        highlight: {
+          highlightOnLoad: false
+        },
+        plugins: [
+          RevealMarkdown,
+          RevealHighlight,
+          RevealZoom,
+          RevealNotes,
+          RevealMath
+        ]
+      };
+
+      // options from URL query string
+      var queryOptions = Reveal().getQueryHash() || {};
+
+      var options = extend(defaultOptions, {"controls":true,"progress":true,"slideNumber":true,"_":["slides"],"static":"public"}, queryOptions);
+    </script>
+
+    <script src="./_assets/slides/js/pruebas.js"></script>
+    <script src="./_assets/slides/js/init.js"></script>
+
+    <script>
+      Reveal.initialize(options);
+      Reveal.addEventListener('ready', function (event) {
+        const blocks = Reveal.getRevealElement().querySelectorAll('pre code:not(.mermaid)');
+        const hlp = Reveal.getPlugin('highlight');
+        blocks.forEach(hlp.highlightBlock);
+      });
+    </script>
+
+    <script>
+      const mermaidOptions = extend({ startOnLoad: false }, {});
+      mermaid.startOnLoad = false;
+      mermaid.initialize(mermaidOptions);
+      const cb = function (event) {
+        mermaid.init(mermaidOptions, '.stack.present > .present pre code.mermaid');
+        mermaid.init(mermaidOptions, '.slides > .present:not(.stack) pre code.mermaid');
+      }
+      Reveal.addEventListener('ready', cb);
+      Reveal.addEventListener('slidetransitionend', cb);
+    </script>
+  </body>
+</html>
