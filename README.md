@@ -1,6 +1,6 @@
 # Presentaciones de la materia Arquitectura de Software 1
 
-Se pueden ver online en https://ucc-arqsoft1.github.io/presentaciones/
+Se pueden ver online en https://gerasalinas7.github.io/presentacionesDesarrolloSoftware/
 
 ## Steps:
 
